@@ -1,6 +1,4 @@
-## OpenCV 3 计算机视觉
-
-
+## OpenCV
 
 ```c++
 #define _UI_IMG_WIDTH_ 640
@@ -33,46 +31,6 @@ putText(img, tmp, Point, FONT_HERSHEY_COMPLEX_SMALL, 0.65, text_color, 1);
 
 circle(mat4map_, center, 3, Scalar(255, 0, 255), -1);
 ```
-
-
-
-
-
-
-
-
-
-## 随机有限集多目标跟踪理论与方法
-
-
-
-- 基于数据关联的多目标跟踪方法
-
-| 时间 | 方法 |
-| ---- | ---- |
-| 1971 | NN   |
-| 1975 | PDA  |
-| 1979 | MHT  |
-| 1980 | JPDA |
-| 1984 | GNN  |
-| 1995 | PMHT |
-
-
-
-- 基于随机有限集的多目标跟踪方法
-
-| 时间 | 方法                                                         |
-| ---- | ------------------------------------------------------------ |
-| 1984 | RFS                                                          |
-| 2002 | PHD                                                          |
-| 2005 | MeMBer                                                       |
-| 2007 | CPHD                                                         |
-| 2008 | OSPA                                                         |
-| 2009 | CBMeMBer                                                     |
-| 2013 | <img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large \delta" style="border:none;">-GLMB |
-| 2014 | LMB                                                          |
-| 2015 | PMBM  PMB                                                    |
-
 
 
 
@@ -359,6 +317,9 @@ git checkout <branch>
 git push origin <local_branch>:<remote_brance>
 git checkout -b local_branch remote_branch
 git branch -r
+
+git add --all
+git rm -r --cached <folder>
 ```
 
 
@@ -614,7 +575,7 @@ target_link_libraries(${PROJECT_NAME}
 
 
 
-## XSD算法逻辑
+
 
 
 
