@@ -320,6 +320,10 @@ git branch -r
 
 git add --all
 git rm -r --cached <folder>
+
+# 回退到某次提交
+git log
+git reset --hard <commit-id>
 ```
 
 
@@ -327,6 +331,8 @@ git rm -r --cached <folder>
 ## CMAKE
 
 ### 常规配置
+
+- 库的头文件一般在`/usr/local/include` 目录
 
 - find_package会在 `/usr/local/share` 等目录搜索 *.cmake文件，里面定义了安装库的相关cmake变量，如 ${OpenCV_LIBS}
 - 如果不使用find_package的方式，可以通过定义头文件目录`include_directories`，库的目录`link_directories`，然后`target_link_libraries`
@@ -556,6 +562,88 @@ target_link_libraries(${PROJECT_NAME}
 #         )
 
 ```
+
+
+
+## VScode配置Latex
+
+- 安装latex-workshop插件
+- Code -> 首选项 -> 设置 -> 输入 settings -> 在settings.json中编辑
+  ```json
+  {
+      "latex-workshop.latex.tools":[
+          {
+              "name": "xelatex",
+              "command": "xelatex",
+              "args": [
+                  "-synctex=1",
+                  "-interaction=nonstopmode",
+                  "-file-line-error",
+                  "-pdf",
+                  "-outdir=%OUTDIR%",
+                  "%DOCFILE%"
+              ],
+              "env": {}
+          },
+          {
+              "name": "bibtex",
+              "command": "bibtex",
+              "args": [
+                  "%DOCFILE%"
+              ],
+              "env": {}
+          },
+      ],
+  
+      "latex-workshop.latex.recipes": [
+          {
+              "name": "xelatex",
+              "tools": [
+                  "xelatex"
+              ]
+          },
+          {
+              "name": "xelatex->bibtex",
+              "tools": [
+                  "xelatex",
+                  "bibtex"
+              ]
+          },
+          // {
+          //     "name": "xbxx",
+          //     "tools": [
+          //         "xelatex",
+          //         "bibtex",
+          //         "xelatex",
+          //         "xelatex"
+          //     ]
+          // },
+      ],
+      "latex-workshop.view.pdf.viewer": "tab",
+  
+  ```
+
+- 使用方法及快捷键
+
+  ```txt
+  打开需要编译的*.tex文件，记录为活动窗口以便编译器捕获
+  点击左侧的TEX插件，进入latex-workshop功能界面，打开Build Latex projet下拉菜单
+  如果没有使用bibtex管理参考文献，选择xelatex编译
+  如果使用bibtex管理参考文献，使用xelatex->bibtex编译，编译完成之后再使用xelatex编译2次
+  view LaTeX PDF
+  crtl + 鼠标左键 : 点击PDF跳转到tex
+  crtl + alt + J : 点击tex跳转到pdf
+  修改完tex文件之后，按 crtl+s 保存，默认会调用编译器编译更新pdf文件
+  
+  常用的方法：
+  修改tex文件，如果没有修改参考文献，使用crtl+s
+  修改tex文件，如果修改了参考文献，使用
+  crtl+s, 终端输入 bibtex <filename>.aux, crtl+s, crtl+s
+  ```
+  
+  
+
+
 
 
 
